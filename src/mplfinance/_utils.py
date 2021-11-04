@@ -427,7 +427,8 @@ def _valid_lines_kwargs():
                                             ( isinstance(value,(list,tuple)) and
                                               all([mcolors.is_color_like(v) for v in value]) ) },
         'linestyle' : { 'Default'     : '-',
-                        'Validator'   : lambda value: value is None or value in valid_linestyles },
+                        'Validator'   : lambda value: value is None or value in valid_linestyles or
+                                            all([v in valid_linestyles for v in value]) },
         'linewidths': { 'Default'     : None,
                         'Validator'   : lambda value: value is None or
                                             isinstance(value,(float,int)) or 
